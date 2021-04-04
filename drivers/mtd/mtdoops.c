@@ -374,10 +374,6 @@ static void mtdoops_do_dump(struct kmsg_dumper *dumper,
 	if (reason == KMSG_DUMP_OOPS && !dump_oops)
 		return;
 
-#ifdef CONFIG_MTD_BLOCK2MTD
-	if (!in_long_press)
-		ufs_enter_h8_disable(g_shost);
-#endif
 	temp_pmsg_start = pmsg_start;
 	buffer_start += MTDOOPS_HEADER_SIZE;
 	kmsg_dump_get_buffer(dumper, true, cxt->oops_buf + buffer_start,
